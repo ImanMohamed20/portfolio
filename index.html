@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iman Mohamed Al-Hussini | React.js Developer & Web Development Instructor</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Iman Mohamed Al-Hussini | React.js Developer & CS Instructor" />
+  <meta name="description" content="Portfolio of Iman Mohamed Al-Hussini - React.js Developer, Teaching Assistant at Obour Institutes, and Web Development Instructor. Discover projects, experience, and technical skills." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            },
+            cyanBrand: {
+              400: '#22d3ee',
+              500: '#06b6d4',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="bg-[#0a0c16] text-slate-100 relative min-h-screen selection:bg-indigo-500 selection:text-white">
+
+  <!-- Interactive Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+  <div class="ambient-glow-3"></div>
+
+  <!-- Custom Glowing Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ========================================================================
+       NAVIGATION BAR
+       ======================================================================== -->
+  <header class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-indigo-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 flex items-center justify-center font-mono font-bold text-lg text-white shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
+          &lt;I/&gt;
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-lg tracking-tight text-white group-hover:text-cyan-400 transition-colors">
+            Iman Mohamed
+          </span>
+          <span class="text-xs font-mono text-indigo-400 tracking-wider">React.js Developer</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+        <a href="#about" class="nav-link hover:text-white transition-colors">About</a>
+        <a href="#skills" class="nav-link hover:text-white transition-colors">Skills</a>
+        <a href="#experience" class="nav-link hover:text-white transition-colors">Experience</a>
+        <a href="#projects" class="nav-link hover:text-white transition-colors">Projects</a>
+        <a href="#activities" class="nav-link hover:text-white transition-colors">Leadership</a>
+        <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Controls: Theme Toggle & CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <button id="theme-toggle-btn" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-white hover:border-indigo-500 transition-all" title="Toggle Theme">
+          <i class="fa-solid fa-sun text-amber-400"></i>
+        </button>
+
+        <a href="#contact" class="btn-primary text-xs uppercase tracking-wider py-2.5 px-5">
+          <i class="fa-solid fa-paper-plane"></i> Let's Talk
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <div class="flex items-center gap-3 md:hidden">
+        <button id="mobile-menu-btn" class="w-10 h-10 rounded-lg glass-card flex items-center justify-center text-slate-200 hover:text-white">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu-dropdown" class="hidden md:hidden glass-panel border-b border-indigo-500/20 px-6 py-5">
+      <div class="flex flex-col gap-4 font-medium text-slate-300">
+        <a href="#about" class="mobile-nav-link hover:text-cyan-400 py-1">About</a>
+        <a href="#skills" class="mobile-nav-link hover:text-cyan-400 py-1">Skills</a>
+        <a href="#experience" class="mobile-nav-link hover:text-cyan-400 py-1">Experience</a>
+        <a href="#projects" class="mobile-nav-link hover:text-cyan-400 py-1">Projects</a>
+        <a href="#activities" class="mobile-nav-link hover:text-cyan-400 py-1">Leadership</a>
+        <a href="#contact" class="mobile-nav-link hover:text-cyan-400 py-1">Contact</a>
+        <div class="pt-3 border-t border-slate-700/50 flex items-center justify-between">
+          <span class="text-xs text-slate-400">Quick Contact:</span>
+          <a href="mailto:eman01232002@gmail.com" class="text-xs text-indigo-400 hover:underline">eman01232002@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO SECTION
+       ======================================================================== -->
+  <section id="hero" class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Column: Copy & CTAs -->
+        <div class="lg:col-span-7 flex flex-col items-start reveal-init">
+          
+          <!-- Availability Pill -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-card border-indigo-500/30 mb-6 pulse-glow">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 -ml-5"></span>
+            <span class="text-xs font-semibold text-slate-200 tracking-wide uppercase">
+              Available for Dev Roles & Teaching Engagements
+            </span>
+          </div>
+
+          <!-- Main Greeting & Name -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] mb-4">
+            Hi, I'm <br class="hidden sm:inline" />
+            <span class="text-gradient">Iman Mohamed</span> <br />
+            <span class="text-slate-200 text-3xl sm:text-4xl lg:text-5xl font-bold">Al-Hussini</span>
+          </h1>
+
+          <!-- Typewriter Title Banner -->
+          <div class="h-10 sm:h-12 flex items-center text-xl sm:text-2xl font-mono text-cyan-400 font-semibold mb-6">
+            <span>&gt; </span>
+            <span id="typewriter-text" class="ml-2"></span>
+            <span class="typing-cursor"></span>
+          </div>
+
+          <!-- Bio Paragraph -->
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
+            Computer Science Graduate from <strong class="text-white">Zagazig University</strong>, 
+            <strong class="text-indigo-400">Teaching Assistant</strong> at Obour Institutes, and 
+            <strong class="text-cyan-400">Web Development Instructor</strong> at DECI (EYouth). 
+            Specializing in building intuitive, high-performance web applications with 
+            <span class="text-white font-medium">React.js, Next.js, and Python</span>, 
+            while mentoring the next generation of software creators.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 w-full sm:w-auto mb-10">
+            <a href="#projects" class="btn-primary w-full sm:w-auto">
+              <i class="fa-solid fa-code"></i> View Projects
+            </a>
+            <a href="#contact" class="btn-secondary w-full sm:w-auto">
+              <i class="fa-solid fa-envelope"></i> Get In Touch
+            </a>
+            <button data-copy="eman01232002@gmail.com" data-copy-label="Email" class="btn-secondary w-full sm:w-auto" title="Click to copy email">
+              <i class="fa-regular fa-copy text-indigo-400"></i> Copy Email
+            </button>
+          </div>
+
+          <!-- Socials and Quick Contacts -->
+          <div class="flex flex-wrap items-center gap-5 pt-6 border-t border-indigo-500/15 w-full">
+            <span class="text-xs uppercase font-mono tracking-wider text-slate-400">Connect With Me:</span>
+            
+            <a href="http://www.linkedin.com/in/iman-mohamed-7536a4251" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-400 transition-all hover:scale-110" title="LinkedIn Profile">
+              <i class="fa-brands fa-linkedin-in text-base"></i>
+            </a>
+
+            <a href="https://github.com/ImanMohamed20" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-indigo-400 hover:border-indigo-400 transition-all hover:scale-110" title="GitHub Profile">
+              <i class="fa-brands fa-github text-base"></i>
+            </a>
+
+            <a href="mailto:eman01232002@gmail.com" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-rose-400 hover:border-rose-400 transition-all hover:scale-110" title="Send Email">
+              <i class="fa-solid fa-envelope text-base"></i>
+            </a>
+
+            <a href="tel:01091392429" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-emerald-400 hover:border-emerald-400 transition-all hover:scale-110" title="Call Direct">
+              <i class="fa-solid fa-phone text-base"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Profile Picture & Floating Holographic Badges -->
+        <div class="lg:col-span-5 flex justify-center items-center relative reveal-init" style="transition-delay: 200ms;">
+          
+          <div class="relative w-72 sm:w-80 md:w-96" data-tilt>
+            
+            <!-- Outer Gradient Glow Ring -->
+            <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 via-cyan-400 to-pink-500 rounded-3xl blur-2xl opacity-40 animate-pulse"></div>
+
+            <!-- Profile Image Container -->
+            <div class="relative rounded-3xl overflow-hidden glass-panel border-2 border-indigo-400/30 p-2.5 shadow-2xl">
+              <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-900 group">
+                <img 
+                  src="./profile.jpg" 
+                  onerror="this.onerror=null; this.src='./assets/profile.jpg';"
+                  alt="Iman Mohamed Al-Hussini" 
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-95 contrast-105"
+                />
+                
+                <!-- Bottom Info Overlay -->
+                <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="text-white font-bold text-sm">Iman Mohamed</p>
+                      <p class="text-cyan-400 font-mono text-xs">CS Graduate & TA</p>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                      Zagazig Univ (GPA 3.08)
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Badge: React.js (Top Right) -->
+            <div class="absolute -top-5 -right-6 glass-card px-3.5 py-2 rounded-2xl border-indigo-400/40 shadow-xl flex items-center gap-2.5 animate-float">
+              <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-cyan-400 flex items-center justify-center text-lg">
+                <i class="fa-brands fa-react"></i>
+              </div>
+              <div>
+                <p class="text-[11px] font-mono text-slate-400 leading-none">Frontend</p>
+                <p class="text-xs font-bold text-white">React.js Specialist</p>
+              </div>
+            </div>
+
+            <!-- Floating Badge: Instructor (Bottom Left) -->
+            <div class="absolute -bottom-5 -left-6 glass-card px-3.5 py-2.5 rounded-2xl border-cyan-400/40 shadow-xl flex items-center gap-2.5 animate-float-delayed">
+              <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-base">
+                <i class="fa-solid fa-chalkboard-user"></i>
+              </div>
+              <div>
+                <p class="text-[11px] font-mono text-slate-400 leading-none">Instructor</p>
+                <p class="text-xs font-bold text-white">DECI & EYouth</p>
+              </div>
+            </div>
+
+            <!-- Floating Badge: AI & Python (Mid Left) -->
+            <div class="hidden sm:flex absolute top-1/2 -left-10 glass-card px-3 py-1.5 rounded-xl border-emerald-400/30 shadow-lg items-center gap-2 animate-float">
+              <i class="fa-brands fa-python text-emerald-400 text-base"></i>
+              <span class="text-xs font-mono font-semibold text-emerald-300">Python & AI</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       KEY STATS / IMPACT COUNTERS
+       ======================================================================== -->
+  <section id="stats-section" class="py-12 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        
+        <!-- Counter 1 -->
+        <div class="glass-card p-6 text-center group">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-user-graduate"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-white mb-1 counter-number" data-target="500" data-suffix="+">
+            0
+          </div>
+          <p class="text-xs sm:text-sm font-medium text-slate-400 uppercase tracking-wider font-mono">Students Mentored</p>
+        </div>
+
+        <!-- Counter 2 -->
+        <div class="glass-card p-6 text-center group">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-white mb-1 counter-number" data-target="10" data-suffix="+">
+            0
+          </div>
+          <p class="text-xs sm:text-sm font-medium text-slate-400 uppercase tracking-wider font-mono">Web Projects Built</p>
+        </div>
+
+        <!-- Counter 3 -->
+        <div class="glass-card p-6 text-center group">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-white mb-1 counter-number" data-target="90" data-suffix="%">
+            0
+          </div>
+          <p class="text-xs sm:text-sm font-medium text-slate-400 uppercase tracking-wider font-mono">AI Accuracy Boost (A+)</p>
+        </div>
+
+        <!-- Counter 4 -->
+        <div class="glass-card p-6 text-center group">
+          <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-white mb-1 counter-number" data-target="3" data-suffix="+ Years">
+            0
+          </div>
+          <p class="text-xs sm:text-sm font-medium text-slate-400 uppercase tracking-wider font-mono">Dev & Training Exp</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ABOUT & EDUCATION SECTION
+       ======================================================================== -->
+  <section id="about" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-init">
+        <span class="text-xs font-mono font-bold text-cyan-400 tracking-widest uppercase mb-2 block">
+          &lt;Background /&gt;
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          About <span class="text-gradient">Iman Mohamed</span>
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        
+        <!-- Left Column: Story & Philosophy -->
+        <div class="lg:col-span-7 glass-card p-8 flex flex-col justify-between reveal-init">
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-code-branch"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Engineering with Purpose & Pedagogy</h3>
+            </div>
+
+            <p class="text-slate-300 leading-relaxed mb-5">
+              I am a dedicated Computer Science graduate who bridges the gap between <strong class="text-white">industry-grade web development</strong> and <strong class="text-cyan-400">transformative technical education</strong>. With hands-on expertise in front-end development using 
+              <span class="text-indigo-300 font-semibold">React.js, Next.js, and modern JavaScript</span>, 
+              I design clean, responsive web applications that solve real-world problems.
+            </p>
+
+            <p class="text-slate-300 leading-relaxed mb-6">
+              As a <strong class="text-white">Teaching Assistant at Obour Institutes</strong> and a <strong class="text-white">Web Development Instructor for DECI (EYouth)</strong>, I deliver comprehensive training in programming fundamentals, Artificial Intelligence, Python, and Power BI. I thrive on breaking down complex architectural concepts into practical, project-based exercises that empower young minds and adult learners alike.
+            </p>
+
+            <!-- Highlights list -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-indigo-500/15">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                <span class="text-sm text-slate-300">Modern Component-Driven React & Next.js Architecture</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                <span class="text-sm text-slate-300">RESTful API Integration & Client-Side Data Management</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                <span class="text-sm text-slate-300">Academic Administration & Ibn Al-Haytham SIS Expertise</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-cyan-400 mt-1"></i>
+                <span class="text-sm text-slate-300">Project-Based Mentorship & Problem-Solving Coaching</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-indigo-500/15 flex flex-wrap gap-4 items-center justify-between text-xs font-mono text-slate-400">
+            <span><i class="fa-solid fa-location-dot text-indigo-400 mr-1.5"></i> Cairo / Zagazig, Egypt</span>
+            <span><i class="fa-solid fa-language text-cyan-400 mr-1.5"></i> Arabic (Native) • English (B1 Intermediate)</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Education & Graduation Distinction -->
+        <div class="lg:col-span-5 flex flex-col gap-6">
+          
+          <!-- Zagazig University Card -->
+          <div class="glass-card p-7 reveal-init relative overflow-hidden group">
+            <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-indigo-500/10 rounded-full blur-xl group-hover:bg-indigo-500/20 transition-all"></div>
+            
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                2019 — 2023
+              </span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                GPA: 3.08
+              </span>
+            </div>
+
+            <h4 class="text-xl font-bold text-white mb-1">Bachelor of Computer Science & Information</h4>
+            <p class="text-cyan-400 font-medium text-sm mb-4">Zagazig University, Egypt</p>
+
+            <div class="p-4 rounded-xl bg-slate-900/70 border border-indigo-500/20">
+              <div class="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
+                <i class="fa-solid fa-trophy"></i>
+                Graduation Project: Mobile AI Chatbot (Grade A+)
+              </div>
+              <p class="text-slate-300 text-xs leading-relaxed mb-3">
+                <strong>Mobile Application with Chatbot Integration for Pharmacy Students' Training Support</strong>. 
+                Collaborated with the College of Pharmacy to develop personalized guidance and drug query capabilities.
+              </p>
+              <ul class="text-xs text-slate-400 space-y-1.5">
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-star text-amber-400 text-[10px]"></i>
+                  <span>Led project analysis and cross-faculty requirement elicitation.</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-star text-amber-400 text-[10px]"></i>
+                  <span>Improved core AI chatbot accuracy by 90% for clinical Q&amp;A.</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-star text-amber-400 text-[10px]"></i>
+                  <span>Authored comprehensive technical documentation.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Academic & Admin Skills Mini Card -->
+          <div class="glass-card p-6 reveal-init" style="transition-delay: 150ms;">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <h5 class="text-sm font-bold text-white">Academic Systems Administration</h5>
+                <p class="text-xs text-slate-400">Ibn Al-Haytham Student Information System</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Experience administering course registration, student progress records, laboratory assessment schedules, and university grade workflows.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SKILLS & TECH STACK SECTION
+       ======================================================================== -->
+  <section id="skills" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-init">
+        <span class="text-xs font-mono font-bold text-cyan-400 tracking-widest uppercase mb-2 block">
+          &lt;Capabilities /&gt;
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Technical &amp; Pedagogical <span class="text-gradient">Skillset</span>
+        </h2>
+        <p class="text-slate-400 text-sm mt-3">A balanced stack of modern front-end technologies, data science tools, and soft leadership capabilities.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Category 1: Front-End Core -->
+        <div class="glass-card p-7 reveal-init" data-tilt>
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl mb-5">
+            <i class="fa-brands fa-react"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Front-End Development</h3>
+          <p class="text-xs text-slate-400 mb-6">Building reactive, performant, mobile-first interfaces.</p>
+
+          <!-- Skill Bars -->
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">React.js &amp; Hooks</span>
+                <span class="text-cyan-400">92%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="92"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">JavaScript (ES6+)</span>
+                <span class="text-cyan-400">90%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="90"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">Next.js Framework</span>
+                <span class="text-cyan-400">82%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="82"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">HTML5, CSS3 &amp; Tailwind CSS</span>
+                <span class="text-cyan-400">95%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="95"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">RESTful APIs &amp; Fetch / Axios</span>
+                <span class="text-cyan-400">88%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="88"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-indigo-500/15">
+            <span class="badge-tech">Local Storage</span>
+            <span class="badge-tech">UI/UX Best Practices</span>
+            <span class="badge-tech">Cross-Browser</span>
+          </div>
+        </div>
+
+        <!-- Category 2: Data, AI & Backend -->
+        <div class="glass-card p-7 reveal-init" style="transition-delay: 150ms;" data-tilt>
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-5">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Data &amp; Artificial Intelligence</h3>
+          <p class="text-xs text-slate-400 mb-6">Analytics, algorithmic logic, and NLP fundamentals.</p>
+
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">Python Programming</span>
+                <span class="text-cyan-400">85%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="85"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">Natural Language Processing (NLP)</span>
+                <span class="text-cyan-400">80%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="80"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">SQL Databases</span>
+                <span class="text-cyan-400">82%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="82"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">Power BI &amp; Data Analytics</span>
+                <span class="text-cyan-400">78%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="78"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-1">
+                <span class="text-slate-300">Statistical Modeling</span>
+                <span class="text-cyan-400">75%</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div class="skill-bar-fill" data-level="75"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-indigo-500/15">
+            <span class="badge-tech">Chatbots</span>
+            <span class="badge-tech">Git &amp; GitHub</span>
+            <span class="badge-tech">API Architecture</span>
+          </div>
+        </div>
+
+        <!-- Category 3: Instruction & Soft Leadership -->
+        <div class="glass-card p-7 reveal-init" style="transition-delay: 300ms;" data-tilt>
+          <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-2xl mb-5">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Teaching &amp; Leadership</h3>
+          <p class="text-xs text-slate-400 mb-6">Proven instructional ability and human-centered leadership.</p>
+
+          <div class="space-y-3.5">
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-indigo-500/15 flex items-center gap-3">
+              <i class="fa-solid fa-chalkboard text-indigo-400 text-lg"></i>
+              <div>
+                <p class="text-xs font-bold text-white">Technical Training &amp; Pedagogy</p>
+                <p class="text-[11px] text-slate-400">DECI (EYouth) &amp; Obour Institutes</p>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-indigo-500/15 flex items-center gap-3">
+              <i class="fa-solid fa-lightbulb text-amber-400 text-lg"></i>
+              <div>
+                <p class="text-xs font-bold text-white">Problem-Solving &amp; Code Review</p>
+                <p class="text-[11px] text-slate-400">Hands-on student debugging support</p>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-indigo-500/15 flex items-center gap-3">
+              <i class="fa-solid fa-people-group text-cyan-400 text-lg"></i>
+              <div>
+                <p class="text-xs font-bold text-white">HR Leadership &amp; Interviewing</p>
+                <p class="text-[11px] text-slate-400">GDSC Zagazig &amp; BioCode Team</p>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900/60 border border-indigo-500/15 flex items-center gap-3">
+              <i class="fa-solid fa-diagram-project text-emerald-400 text-lg"></i>
+              <div>
+                <p class="text-xs font-bold text-white">Project Management &amp; Delivery</p>
+                <p class="text-[11px] text-slate-400">Multi-team milestone coordination</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-6 pt-5 border-t border-indigo-500/15">
+            <span class="badge-tech">Active Listening</span>
+            <span class="badge-tech">Team Collaboration</span>
+            <span class="badge-tech">Self-Motivation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       WORK EXPERIENCE & TIMELINE SECTION
+       ======================================================================== -->
+  <section id="experience" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-init">
+        <span class="text-xs font-mono font-bold text-cyan-400 tracking-widest uppercase mb-2 block">
+          &lt;Career Journey /&gt;
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Professional <span class="text-gradient">Experience</span>
+        </h2>
+        <p class="text-slate-400 text-sm mt-3">Track record of university teaching, national initiative instruction, and web development.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="timeline-container space-y-12">
+        
+        <!-- Timeline Item 1: DECI Instructor -->
+        <div class="timeline-item relative pl-12 md:pl-0 reveal-init">
+          <div class="md:grid md:grid-cols-2 md:gap-12 items-center">
+            
+            <!-- Left Info (Desktop) -->
+            <div class="md:text-right mb-4 md:mb-0">
+              <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                2026 — Present
+              </span>
+              <h3 class="text-xl font-bold text-white mt-2">Web Development Instructor</h3>
+              <p class="text-cyan-400 font-medium text-sm">Digital Egypt Cubs Initiative (DECI) by EYouth</p>
+            </div>
+
+            <!-- Dot -->
+            <div class="timeline-dot top-2 left-[11px] md:left-1/2 md:-translate-x-1/2"></div>
+
+            <!-- Right Content -->
+            <div class="glass-card p-6">
+              <ul class="text-sm text-slate-300 space-y-2">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                  <span>Deliver structured technical training in programming fundamentals and modern web development to young talented learners.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                  <span>Explain core web concepts through live code demonstrations, hands-on lab sessions, and interactive debugging exercises.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                  <span>Mentor students through building real-world software applications, fostering critical problem-solving and algorithmic thinking.</span>
+                </li>
+              </ul>
+              <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-indigo-500/10">
+                <span class="badge-tech">HTML5/CSS3</span>
+                <span class="badge-tech">JavaScript</span>
+                <span class="badge-tech">Technical Mentorship</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Timeline Item 2: Teaching Assistant Obour -->
+        <div class="timeline-item relative pl-12 md:pl-0 reveal-init">
+          <div class="md:grid md:grid-cols-2 md:gap-12 items-center">
+            
+            <!-- Left Card -->
+            <div class="glass-card p-6 order-2 md:order-1">
+              <ul class="text-sm text-slate-300 space-y-2">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                  <span>Conduct computer science laboratory sessions, tutorials, and practical programming coursework for undergraduate students.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                  <span>Conduct specialized summer training programs in Artificial Intelligence (AI), Python, and Microsoft Power BI.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                  <span>Administer student registration and academic procedures via the Ibn Al-Haytham Student Information System.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                  <span>Design practical exams, assessment rubrics, and modern supplementary curriculum modules.</span>
+                </li>
+              </ul>
+              <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-indigo-500/10">
+                <span class="badge-tech">Python</span>
+                <span class="badge-tech">Power BI</span>
+                <span class="badge-tech">Artificial Intelligence</span>
+                <span class="badge-tech">Ibn Al-Haytham SIS</span>
+              </div>
+            </div>
+
+            <!-- Dot -->
+            <div class="timeline-dot top-2 left-[11px] md:left-1/2 md:-translate-x-1/2"></div>
+
+            <!-- Right Info (Desktop) -->
+            <div class="order-1 md:order-2 mb-4 md:mb-0">
+              <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                2025 — Present
+              </span>
+              <h3 class="text-xl font-bold text-white mt-2">Teaching Assistant</h3>
+              <p class="text-indigo-400 font-medium text-sm">Obour Institutes, Cairo, Egypt</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Timeline Item 3: Skills Area Instructor -->
+        <div class="timeline-item relative pl-12 md:pl-0 reveal-init">
+          <div class="md:grid md:grid-cols-2 md:gap-12 items-center">
+            
+            <div class="md:text-right mb-4 md:mb-0">
+              <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                2024 — 2026
+              </span>
+              <h3 class="text-xl font-bold text-white mt-2">Web Instructor</h3>
+              <p class="text-cyan-400 font-medium text-sm">Skills Area — Online Team</p>
+            </div>
+
+            <div class="timeline-dot top-2 left-[11px] md:left-1/2 md:-translate-x-1/2"></div>
+
+            <div class="glass-card p-6">
+              <ul class="text-sm text-slate-300 space-y-2">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                  <span>Delivered remote front-end web development bootcamps for adult learners and university students aged 18–25.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                  <span>Explained HTML, CSS, JavaScript, and responsive design through practical live coding and peer review.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-cyan-400 mt-1 flex-shrink-0"></i>
+                  <span>Supported learners in translating programming concepts into fully deployed portfolio projects.</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Timeline Item 4: IT-MARTIAN Developer -->
+        <div class="timeline-item relative pl-12 md:pl-0 reveal-init">
+          <div class="md:grid md:grid-cols-2 md:gap-12 items-center">
+            
+            <div class="glass-card p-6 order-2 md:order-1">
+              <ul class="text-sm text-slate-300 space-y-2">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                  <span>Engineered responsive web interfaces for critical blood and life-saving medicine donation portals.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                  <span>Implemented the <strong class="text-white">HDL Drugs Donation</strong> module and secure user authentication flows.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-indigo-400 mt-1 flex-shrink-0"></i>
+                  <span>Applied cross-browser compatibility and optimized mobile rendering for urgent user flows.</span>
+                </li>
+              </ul>
+              <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-indigo-500/10">
+                <span class="badge-tech">HTML5</span>
+                <span class="badge-tech">CSS3</span>
+                <span class="badge-tech">JavaScript</span>
+                <span class="badge-tech">Healthcare Tech</span>
+              </div>
+            </div>
+
+            <div class="timeline-dot top-2 left-[11px] md:left-1/2 md:-translate-x-1/2"></div>
+
+            <div class="order-1 md:order-2 mb-4 md:mb-0">
+              <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                2022 — 2023
+              </span>
+              <h3 class="text-xl font-bold text-white mt-2">Front-End Web Developer</h3>
+              <p class="text-purple-400 font-medium text-sm">IT-MARTIAN, Cairo, Egypt</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Traineeships Showcase -->
+      <div class="mt-20">
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-certificate text-cyan-400"></i>
+          Intensive Traineeships &amp; Bootcamps
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- DEPI Traineeship -->
+          <div class="glass-card p-6 border-indigo-500/30 reveal-init">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-indigo-300 bg-indigo-500/20 px-3 py-1 rounded-full">
+                04/2024 — 12/2024 (8 Months)
+              </span>
+              <span class="text-xs font-bold text-emerald-400">Graduation Distinction</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Egypt Digital Pioneers Initiative (DEPI)</h4>
+            <p class="text-xs text-cyan-400 mb-3">Web Development Specialist Intern</p>
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+              Comprehensive 8-month hands-on fellowship covering React.js, RESTful APIs, LocalStorage data workflows, and modern web application development. Delivered the complete E-Commerce graduation project with live server and client deployments.
+            </p>
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400 pt-3 border-t border-indigo-500/10">
+              <span>Capstone: E-Commerce Web App</span>
+              <a href="https://client-esw.vercel.app/" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
+                Live App <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- CognoRise InfoTech Traineeship -->
+          <div class="glass-card p-6 border-cyan-500/30 reveal-init" style="transition-delay: 150ms;">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-cyan-300 bg-cyan-500/20 px-3 py-1 rounded-full">
+                09/2024 — 10/2024 (1 Month)
+              </span>
+              <span class="text-xs font-bold text-cyan-400">5+ Shipped Apps</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">CognoRise InfoTech</h4>
+            <p class="text-xs text-cyan-400 mb-3">Web Development Intern</p>
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+              Rapid project delivery internship developing interactive web tools including real-time currency converters, to-do productivity suites, countdown timers, and calculators with React.js, Next.js, and external REST APIs.
+            </p>
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400 pt-3 border-t border-indigo-500/10">
+              <span>GitHub Repositories Available</span>
+              <a href="https://github.com/ImanMohamed20/CognoRise_Infotech" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
+                View Repos <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FEATURED PROJECTS SECTION
+       ======================================================================== -->
+  <section id="projects" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12 reveal-init">
+        <span class="text-xs font-mono font-bold text-cyan-400 tracking-widest uppercase mb-2 block">
+          &lt;Work &amp; Case Studies /&gt;
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Featured <span class="text-gradient">Projects</span>
+        </h2>
+        <p class="text-slate-400 text-sm mt-3">From enterprise e-commerce systems to healthcare platforms and machine learning chatbots.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-12 reveal-init">
+        <button class="project-filter-btn active px-4 py-2 rounded-full text-xs font-semibold bg-indigo-600 text-white transition-all" data-filter="all">
+          All Projects (6)
+        </button>
+        <button class="project-filter-btn px-4 py-2 rounded-full text-xs font-semibold text-slate-400 hover:text-white glass-card transition-all" data-filter="react">
+          React &amp; Full-Stack
+        </button>
+        <button class="project-filter-btn px-4 py-2 rounded-full text-xs font-semibold text-slate-400 hover:text-white glass-card transition-all" data-filter="ai">
+          AI &amp; Healthcare
+        </button>
+        <button class="project-filter-btn px-4 py-2 rounded-full text-xs font-semibold text-slate-400 hover:text-white glass-card transition-all" data-filter="mini">
+          Web Apps &amp; Utilities
+        </button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- PROJECT 1: E-Commerce Web App (DEPI) -->
+        <div class="project-item project-card glass-card overflow-hidden flex flex-col justify-between" data-category="react featured" data-tilt>
+          <div>
+            <div class="relative aspect-video overflow-hidden group">
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+                alt="E-Commerce Web Application" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <span class="absolute top-3 right-3 text-[10px] font-mono font-bold bg-indigo-600/90 text-white px-2.5 py-1 rounded-full shadow">
+                DEPI Capstone
+              </span>
+            </div>
+
+            <div class="p-6">
+              <p class="text-xs font-mono text-cyan-400 mb-1">React.js • REST API • Full-Stack</p>
+              <h3 class="text-xl font-bold text-white mb-2 hover:text-indigo-400 transition-colors">
+                E-Commerce Web Application
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                Full-featured online shopping platform with dynamic Product Management, interactive image sliders, persistent shopping cart via LocalStorage, and checkout workflows.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="badge-tech text-[10px]">React.js</span>
+                <span class="badge-tech text-[10px]">RESTful APIs</span>
+                <span class="badge-tech text-[10px]">Local Storage</span>
+                <span class="badge-tech text-[10px]">Vercel &amp; Railway</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-2 border-t border-indigo-500/10 flex items-center justify-between">
+            <button data-open-modal="ecommerce" class="text-xs font-semibold text-indigo-400 hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-circle-info"></i> Details
+            </button>
+            <div class="flex items-center gap-2">
+              <a href="https://client-esw.vercel.app/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 flex items-center gap-1.5 transition-colors" title="Open Live Client Demo">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Live App
+              </a>
+              <a href="https://github.com/ImanMohamed20" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-white" title="GitHub Repo">
+                <i class="fa-brands fa-github text-sm"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: Pharmacy AI Chatbot (Grad Project) -->
+        <div class="project-item project-card glass-card overflow-hidden flex flex-col justify-between" data-category="ai featured" data-tilt>
+          <div>
+            <div class="relative aspect-video overflow-hidden group">
+              <img 
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" 
+                alt="Pharmacy AI Chatbot App" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <span class="absolute top-3 right-3 text-[10px] font-mono font-bold bg-emerald-600/90 text-white px-2.5 py-1 rounded-full shadow">
+                Grade (A+)
+              </span>
+            </div>
+
+            <div class="p-6">
+              <p class="text-xs font-mono text-emerald-400 mb-1">AI • NLP • Mobile App</p>
+              <h3 class="text-xl font-bold text-white mb-2 hover:text-cyan-400 transition-colors">
+                Pharmacy AI Chatbot &amp; Mobile App
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                Cross-faculty graduation project for Zagazig University College of Pharmacy. Developed an intelligent conversational assistant, boosting clinical accuracy by 90%.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="badge-tech text-[10px]">Python</span>
+                <span class="badge-tech text-[10px]">NLP / Chatbot</span>
+                <span class="badge-tech text-[10px]">Healthcare</span>
+                <span class="badge-tech text-[10px]">Mobile Training</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-2 border-t border-indigo-500/10 flex items-center justify-between">
+            <button data-open-modal="pharmacy" class="text-xs font-semibold text-indigo-400 hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-circle-info"></i> Details
+            </button>
+            <a href="https://github.com/ImanMohamed20" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 flex items-center gap-1.5 transition-colors">
+              <i class="fa-brands fa-github text-sm"></i> Codebase
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 3: Blood & Medicine Donation (IT-MARTIAN) -->
+        <div class="project-item project-card glass-card overflow-hidden flex flex-col justify-between" data-category="ai react" data-tilt>
+          <div>
+            <div class="relative aspect-video overflow-hidden group">
+              <img 
+                src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" 
+                alt="Blood and Medicine Donation Platform" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <span class="absolute top-3 right-3 text-[10px] font-mono font-bold bg-pink-600/90 text-white px-2.5 py-1 rounded-full shadow">
+                Production Web
+              </span>
+            </div>
+
+            <div class="p-6">
+              <p class="text-xs font-mono text-pink-400 mb-1">JavaScript • HTML5/CSS3 • Auth</p>
+              <h3 class="text-xl font-bold text-white mb-2 hover:text-pink-400 transition-colors">
+                Blood &amp; Medicine Donation Platforms
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                Life-saving healthcare platforms built at IT-MARTIAN. Built the HDL Drugs Donation module, donor registration, authentication, and responsive views.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="badge-tech text-[10px]">JavaScript</span>
+                <span class="badge-tech text-[10px]">HDL Drugs</span>
+                <span class="badge-tech text-[10px]">Authentication</span>
+                <span class="badge-tech text-[10px]">Responsive UI</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-2 border-t border-indigo-500/10 flex items-center justify-between">
+            <button data-open-modal="itmartian" class="text-xs font-semibold text-indigo-400 hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-circle-info"></i> Details
+            </button>
+            <a href="https://github.com/ImanMohamed20" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500/30 flex items-center gap-1.5 transition-colors">
+              <i class="fa-brands fa-github text-sm"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 4: Currency Converter (CognoRise) -->
+        <div class="project-item project-card glass-card overflow-hidden flex flex-col justify-between" data-category="mini react" data-tilt>
+          <div>
+            <div class="relative aspect-video overflow-hidden group">
+              <img 
+                src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=800&q=80" 
+                alt="Currency Converter" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <span class="absolute top-3 right-3 text-[10px] font-mono font-bold bg-amber-600/90 text-white px-2.5 py-1 rounded-full shadow">
+                Live REST API
+              </span>
+            </div>
+
+            <div class="p-6">
+              <p class="text-xs font-mono text-amber-400 mb-1">React.js • Financial Data</p>
+              <h3 class="text-xl font-bold text-white mb-2 hover:text-amber-400 transition-colors">
+                Real-Time Currency Converter
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                Dynamic currency exchange application connected to live foreign exchange rates API with instant calculations, currency swap, and responsive controls.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="badge-tech text-[10px]">React.js</span>
+                <span class="badge-tech text-[10px]">Exchange API</span>
+                <span class="badge-tech text-[10px]">Async / Await</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-2 border-t border-indigo-500/10 flex items-center justify-between">
+            <button data-open-modal="cognorise_currency" class="text-xs font-semibold text-indigo-400 hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-circle-info"></i> Details
+            </button>
+            <a href="https://github.com/ImanMohamed20/CognoRise_Infotech/tree/main/currency" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 flex items-center gap-1.5 transition-colors">
+              <i class="fa-brands fa-github text-sm"></i> Repo Link
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 5: Task Manager / To-Do App -->
+        <div class="project-item project-card glass-card overflow-hidden flex flex-col justify-between" data-category="mini react" data-tilt>
+          <div>
+            <div class="relative aspect-video overflow-hidden group">
+              <img 
+                src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=80" 
+                alt="Modern To-Do List Application" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <span class="absolute top-3 right-3 text-[10px] font-mono font-bold bg-cyan-600/90 text-white px-2.5 py-1 rounded-full shadow">
+                Productivity App
+              </span>
+            </div>
+
+            <div class="p-6">
+              <p class="text-xs font-mono text-cyan-400 mb-1">React.js • LocalStorage</p>
+              <h3 class="text-xl font-bold text-white mb-2 hover:text-cyan-400 transition-colors">
+                Interactive To-Do &amp; Task Manager
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                Sleek task manager featuring full CRUD functionality, filter views, completion status animations, and persistent storage across browser sessions.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="badge-tech text-[10px]">React Hooks</span>
+                <span class="badge-tech text-[10px]">Local Storage</span>
+                <span class="badge-tech text-[10px]">CSS Animations</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-2 border-t border-indigo-500/10 flex items-center justify-between">
+            <button data-open-modal="cognorise_todo" class="text-xs font-semibold text-indigo-400 hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-circle-info"></i> Details
+            </button>
+            <a href="https://github.com/ImanMohamed20/CognoRise_Infotech/tree/main/to-do-list" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 flex items-center gap-1.5 transition-colors">
+              <i class="fa-brands fa-github text-sm"></i> Repo Link
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 6: Countdown Timer & Utilities -->
+        <div class="project-item project-card glass-card overflow-hidden flex flex-col justify-between" data-category="mini" data-tilt>
+          <div>
+            <div class="relative aspect-video overflow-hidden group">
+              <img 
+                src="https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=800&q=80" 
+                alt="Countdown Timer & Calculator Suite" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <span class="absolute top-3 right-3 text-[10px] font-mono font-bold bg-violet-600/90 text-white px-2.5 py-1 rounded-full shadow">
+                Utility Suite
+              </span>
+            </div>
+
+            <div class="p-6">
+              <p class="text-xs font-mono text-purple-400 mb-1">JavaScript ES6+ • HTML5/CSS3</p>
+              <h3 class="text-xl font-bold text-white mb-2 hover:text-purple-400 transition-colors">
+                Countdown Timer &amp; Health Tools
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                Precision countdown timer with visual progress dial and audio alarms, bundled with a BMI health index calculator and scientific calculator.
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                <span class="badge-tech text-[10px]">DOM Manipulation</span>
+                <span class="badge-tech text-[10px]">Timer Intervals</span>
+                <span class="badge-tech text-[10px]">BMI Formula</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-2 border-t border-indigo-500/10 flex items-center justify-between">
+            <button data-open-modal="cognorise_timer" class="text-xs font-semibold text-indigo-400 hover:text-cyan-400 flex items-center gap-1.5 transition-colors">
+              <i class="fa-solid fa-circle-info"></i> Details
+            </button>
+            <a href="https://github.com/ImanMohamed20/CognoRise_Infotech/tree/main/COUNTDOWN%20TIMER" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-violet-500/20 text-violet-300 hover:bg-violet-500/30 flex items-center gap-1.5 transition-colors">
+              <i class="fa-brands fa-github text-sm"></i> Repo Link
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       STUDENT ACTIVITIES & LEADERSHIP SECTION
+       ======================================================================== -->
+  <section id="activities" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-init">
+        <span class="text-xs font-mono font-bold text-cyan-400 tracking-widest uppercase mb-2 block">
+          &lt;Community &amp; Impact /&gt;
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Leadership &amp; <span class="text-gradient">Student Activities</span>
+        </h2>
+        <p class="text-slate-400 text-sm mt-3">Active contributor to developer ecosystems and youth community building.</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Activity 1: GDSC Zagazig -->
+        <div class="glass-card p-8 reveal-init" data-tilt>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+              2022 — 2023
+            </span>
+            <span class="text-xs text-slate-400 font-mono">Google Developer Student Clubs</span>
+          </div>
+
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
+              <i class="fa-brands fa-google"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">HR Team Member</h3>
+              <p class="text-cyan-400 text-xs font-medium">GDSC Zagazig University</p>
+            </div>
+          </div>
+
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Conducted interviews for prospective committee members, designed onboarding criteria, and facilitated workshops for aspiring tech leaders across the campus.
+          </p>
+
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-cyan-500/20 mb-4">
+            <div class="flex items-center gap-2 text-cyan-300 text-xs font-bold uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-flag"></i> Key Milestone: Flutter Forward Zagazig
+            </div>
+            <p class="text-xs text-slate-400">
+              Played a pivotal leadership role in organizing <strong class="text-white">Flutter Forward Zagazig</strong> at the Faculty of Computers and Informatics, hosting hundreds of attendees and developers.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="badge-tech">Event Organization</span>
+            <span class="badge-tech">HR Management</span>
+            <span class="badge-tech">Public Speaking</span>
+          </div>
+        </div>
+
+        <!-- Activity 2: BioCode Team -->
+        <div class="glass-card p-8 reveal-init" style="transition-delay: 150ms;" data-tilt>
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+              2021 — 2023
+            </span>
+            <span class="text-xs text-slate-400 font-mono">BioCode Technical Society</span>
+          </div>
+
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-dna"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">HR Supervisor &amp; Member</h3>
+              <p class="text-indigo-400 text-xs font-medium">BioCode Team</p>
+            </div>
+          </div>
+
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Supervised cross-functional member tracks, monitored performance milestones, and maintained effective team alignment to ensure deliverables were met on time with highest quality.
+          </p>
+
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-indigo-500/20 mb-4">
+            <div class="flex items-center gap-2 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-1">
+              <i class="fa-solid fa-bullseye"></i> Impact &amp; Deliverables
+            </div>
+            <p class="text-xs text-slate-400">
+              Fostered healthy collaborative team culture, led internal talent assessments, and resolved workflow blockers across bio-informatics and software squads.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="badge-tech">Talent Assessment</span>
+            <span class="badge-tech">Team Supervision</span>
+            <span class="badge-tech">Conflict Resolution</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       CONTACT & GET IN TOUCH SECTION
+       ======================================================================== -->
+  <section id="contact" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal-init">
+        <span class="text-xs font-mono font-bold text-cyan-400 tracking-widest uppercase mb-2 block">
+          &lt;Let's Connect /&gt;
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Get In <span class="text-gradient">Touch</span>
+        </h2>
+        <p class="text-slate-400 text-sm mt-3">Interested in collaboration, engineering roles, training sessions, or speaking engagements?</p>
+        <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Left Column: Contact Cards -->
+        <div class="lg:col-span-5 flex flex-col gap-5 reveal-init">
+          
+          <!-- Email Card -->
+          <div class="glass-card p-5 flex items-center justify-between group hover:border-indigo-400 transition-all">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <p class="text-xs font-mono text-slate-400">Email Address</p>
+                <a href="mailto:eman01232002@gmail.com" class="text-sm font-bold text-white hover:text-cyan-400 transition-colors">
+                  eman01232002@gmail.com
+                </a>
+              </div>
+            </div>
+            <button data-copy="eman01232002@gmail.com" data-copy-label="Email" class="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-white" title="Copy Email">
+              <i class="fa-regular fa-copy text-sm"></i>
+            </button>
+          </div>
+
+          <!-- Phone Card -->
+          <div class="glass-card p-5 flex items-center justify-between group hover:border-emerald-400 transition-all">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <p class="text-xs font-mono text-slate-400">Direct Phone</p>
+                <a href="tel:01091392429" class="text-sm font-bold text-white hover:text-emerald-400 transition-colors">
+                  01091392429
+                </a>
+              </div>
+            </div>
+            <button data-copy="01091392429" data-copy-label="Phone" class="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-slate-300 hover:text-white" title="Copy Phone">
+              <i class="fa-regular fa-copy text-sm"></i>
+            </button>
+          </div>
+
+          <!-- LinkedIn Card -->
+          <div class="glass-card p-5 flex items-center justify-between group hover:border-cyan-400 transition-all">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </div>
+              <div>
+                <p class="text-xs font-mono text-slate-400">LinkedIn Profile</p>
+                <span class="text-sm font-bold text-white">iman-mohamed-7536a4251</span>
+              </div>
+            </div>
+            <a href="http://www.linkedin.com/in/iman-mohamed-7536a4251" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-cyan-300 hover:text-white" title="Open LinkedIn">
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+          </div>
+
+          <!-- GitHub Card -->
+          <div class="glass-card p-5 flex items-center justify-between group hover:border-purple-400 transition-all">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-github"></i>
+              </div>
+              <div>
+                <p class="text-xs font-mono text-slate-400">GitHub Profile</p>
+                <span class="text-sm font-bold text-white">ImanMohamed20</span>
+              </div>
+            </div>
+            <a href="https://github.com/ImanMohamed20" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-purple-300 hover:text-white" title="Open GitHub">
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Interactive Send Message Form -->
+        <div class="lg:col-span-7 glass-card p-8 reveal-init" style="transition-delay: 150ms;">
+          <h3 class="text-2xl font-bold text-white mb-2">Send a Direct Message</h3>
+          <p class="text-xs text-slate-400 mb-6">Fill in the form below to initiate direct communication.</p>
+
+          <form id="portfolio-contact-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="form-name" class="block text-xs font-mono text-slate-300 mb-1.5">Your Name *</label>
+                <input 
+                  type="text" 
+                  id="form-name" 
+                  required 
+                  placeholder="e.g. Sarah Jenkins"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-indigo-500/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors text-sm"
+                />
+              </div>
+
+              <div>
+                <label for="form-email" class="block text-xs font-mono text-slate-300 mb-1.5">Your Email *</label>
+                <input 
+                  type="email" 
+                  id="form-email" 
+                  required 
+                  placeholder="name@company.com"
+                  class="w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-indigo-500/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="form-subject" class="block text-xs font-mono text-slate-300 mb-1.5">Subject</label>
+              <input 
+                type="text" 
+                id="form-subject" 
+                placeholder="Front-End Role / Web Development Training"
+                class="w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-indigo-500/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors text-sm"
+              />
+            </div>
+
+            <div>
+              <label for="form-message" class="block text-xs font-mono text-slate-300 mb-1.5">Message *</label>
+              <textarea 
+                id="form-message" 
+                rows="4" 
+                required 
+                placeholder="Hi Iman, I came across your portfolio and would love to discuss..."
+                class="w-full px-4 py-3 rounded-xl bg-slate-900/70 border border-indigo-500/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors text-sm resize-none"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary w-full py-3.5 text-sm uppercase tracking-wider font-semibold">
+              <i class="fa-solid fa-paper-plane mr-2"></i> Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="py-12 border-t border-indigo-500/15 glass-panel relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Brand & Copyright -->
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-mono font-bold text-sm text-white">
+          &lt;I/&gt;
+        </div>
+        <p class="text-xs text-slate-400">
+          © <span id="current-year">2026</span> <strong class="text-white">Iman Mohamed Al-Hussini</strong>. Crafted with React passion, high fidelity &amp; animations.
+        </p>
+      </div>
+
+      <!-- Quick Nav Links -->
+      <div class="flex items-center gap-6 text-xs text-slate-400 font-medium">
+        <a href="#hero" class="hover:text-cyan-400 transition-colors">Top</a>
+        <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+        <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+        <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+      </div>
+
+      <!-- Back to Top Button -->
+      <a href="#hero" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-white hover:border-cyan-400 transition-all hover:-translate-y-1" title="Back to top">
+        <i class="fa-solid fa-arrow-up text-xs"></i>
+      </a>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       PROJECT DETAILS MODAL VIEWER
+       ======================================================================== -->
+  <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-content relative p-6 sm:p-8">
+      
+      <!-- Close Button -->
+      <button id="modal-close-btn" class="absolute top-5 right-5 w-9 h-9 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-white hover:border-rose-500 transition-all z-10" title="Close Modal">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+
+      <!-- Modal Image Banner -->
+      <div class="relative rounded-2xl overflow-hidden aspect-video mb-6 border border-indigo-500/20 bg-slate-950">
+        <img id="modal-img" src="" alt="Project Preview" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+        <span id="modal-category" class="absolute bottom-4 left-4 text-xs font-mono font-bold bg-indigo-600/90 text-white px-3 py-1 rounded-full shadow"></span>
+      </div>
+
+      <!-- Modal Content Body -->
+      <h3 id="modal-title" class="text-2xl font-bold text-white mb-1"></h3>
+      <p id="modal-subtitle" class="text-xs font-mono text-cyan-400 mb-4"></p>
+      
+      <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed mb-6"></p>
+
+      <!-- Key Features List -->
+      <div class="mb-6">
+        <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-list-check text-cyan-400"></i> Key Features &amp; Architecture:
+        </h4>
+        <ul id="modal-features" class="space-y-2"></ul>
+      </div>
+
+      <!-- Tech Stack Badges -->
+      <div class="mb-8">
+        <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-layer-group text-indigo-400"></i> Technologies Used:
+        </h4>
+        <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-indigo-500/15">
+        <a id="modal-live-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary text-xs py-2.5 px-5">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Demo
+        </a>
+        <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2.5 px-5">
+          <i class="fa-brands fa-github text-sm"></i> View Source Code
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Custom JavaScript File -->
+  <script src="./script.js"></script>
+</body>
+</html>
