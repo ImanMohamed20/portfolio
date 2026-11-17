@@ -1,72 +1,28 @@
-# 🌟 Iman Mohamed Al-Hussini - Professional Interactive Portfolio
+# 🌟 Iman Mohamed Al-Hussini – Interactive Developer Portfolio
 
-A modern, high-performance, and animated portfolio website for **Iman Mohamed Al-Hussini**, React.js Developer, Computer Science Teaching Assistant at Obour Institutes, and Web Development Instructor at DECI (EYouth).
+Modern, high-performance portfolio built for **Iman Mohamed Al-Hussini** — React.js Developer, CS Teaching Assistant at Obour Institutes, and Web Development Instructor at DECI (EYouth).
 
----
-
-## 🚀 Key Features & Interactive Animations
-
-- **🌌 Interactive Constellation & Particle Canvas**: Dynamic HTML5 canvas with mouse repulsion and floating physics.
-- **✨ Custom Neon Cursor & Trailing Aura**: Smooth lerp cursor tracking with magnetic hover reactions on buttons and cards.
-- **⚡ Dynamic Typewriter Banner**: Automatic cycling titles emphasizing front-end development, university teaching, and community mentorship.
-- **🎴 3D Holographic Card Tilt**: 3D perspective shifts on card hover with dynamic shine reflections.
-- **📊 Animated Impact Counters**: Live statistical counters (500+ students, 10+ web apps, 90% AI boost, 3+ years experience) that trigger when scrolled into view.
-- **🎨 Dark / Light Mode Switcher**: Seamless theme toggling with localStorage persistence.
-- **🔍 Filterable Projects Portfolio**: Interactive category switcher (All, React & Full-Stack, AI & Healthcare, Mini-Apps).
-- **📱 High-Fidelity Project Modal Viewer**: Deep-dive popup for case studies detailing architecture, feature lists, and direct links to live deployments and GitHub repositories.
-- **📋 One-Click Copy & Toast System**: Instant copy for Email (`eman01232002@gmail.com`) and Phone (`01091392429`) with animated feedback toasts.
-- **📨 Interactive Contact Form**: Client-validated form with instant confirmation and automated mailto dispatch.
+🌐 **Live Website:** [https://imanmohamed20.github.io/portfolio/](https://imanmohamed20.github.io/portfolio/)  
+📄 **Printable ATS CV:** [https://imanmohamed20.github.io/portfolio/cv.html](https://imanmohamed20.github.io/portfolio/cv.html)
 
 ---
 
-## 📂 Project Structure
-
-```
-iman-portfolio/
-├── index.html            # Main markup with responsive Tailwind CSS layout
-├── style.css             # Glassmorphism, custom animations, keyframes, variables
-├── script.js             # Canvas physics, cursor, typewriter, modals, counters
-├── assets/
-│   └── profile.jpg       # Authentic portrait photo of Iman Mohamed
-└── README.md             # Documentation and deployment guide
-```
+## ✨ Features & Visual System
+- **Deep Space Dark Aesthetic & Neon Cyber Accents** (`#0B0F19`, Emerald / Cyan / Blue glow orbs, ambient grid overlay).
+- **Interactive Particle Network Canvas** with live mouse attraction and dynamic node connections.
+- **Spotlight Hover Glow (Vercel / Linear Style)** & **3D Perspective Card Tilt**.
+- **Dynamic Typewriter Hero Banner** & Smooth Scroll Reveal animations.
+- **Interactive Chart.js & React Code Showcase** for the DEPI E-Commerce Capstone.
+- **Filterable Verified Certifications Gallery (6 Certificates)** with full-resolution Lightbox Carousel and keyboard navigation (`←`, `→`, `ESC`).
+- **Printable Formal ATS-Friendly `cv.html`** with one-click PDF export.
+- **Direct WhatsApp & Email Contact Integration**.
 
 ---
 
-## 💻 How to Open and View
-
-### Option 1: Direct Browser Launch
-Simply double-click `index.html` or drag and drop it into Google Chrome, Microsoft Edge, Firefox, or Safari!
-
-### Option 2: VS Code Live Server
-1. Open the `iman-portfolio` folder in VS Code.
-2. Right-click `index.html` and select **"Open with Live Server"**.
-
-### Option 3: Deploy to GitHub Pages or Vercel
-1. Push the folder to a GitHub repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: initial release of Iman Mohamed portfolio"
-   git branch -M main
-   git remote add origin https://github.com/ImanMohamed20/portfolio.git
-   git push -u origin main
-   ```
-2. Enable **GitHub Pages** under repository *Settings > Pages*, or import the repository into **Vercel** for automatic continuous deployment.
-
----
-
-## 👩‍💻 Profile Summary Included in Portfolio
-
-- **Name**: Iman Mohamed Al-Hussini
-- **Degree**: B.Sc. Computer Science & Information, Zagazig University (GPA: 3.08)
-- **Graduation Project**: Mobile Application with Chatbot Integration for Pharmacy Students' Training Support (Grade A+, 90% AI accuracy enhancement)
-- **Roles**:
-  - Teaching Assistant @ Obour Institutes (2025–Present)
-  - Web Development Instructor @ Digital Egypt Cubs Initiative (DECI) by EYouth (2026–Present)
-  - Web Instructor @ Skills Area (2024–2026)
-  - Front-End Developer @ IT-MARTIAN (2022–2023)
-- **Traineeships**:
-  - Egypt Digital Pioneers Initiative (DEPI) – E-Commerce Graduation Capstone (React.js, RESTful API, LocalStorage)
-  - CognoRise InfoTech – Real-time Currency Converter, To-Do App, Countdown Timer, Health Calculators
-- **Leadership**: GDSC Zagazig HR & Flutter Forward Organizer, BioCode HR Supervisor
+## 🏆 Verified Credentials Included
+1. **DEPI – React Web Developer Track** (Ministry of Communications & IT – MCIT, EYouth)
+2. **DEPI – Business English Track Round 1** (MCIT Egypt, OTO Courses)
+3. **30-Day Technical Internship in Web Development** (CognoRise InfoTech – ID: CRIT11CTF540)
+4. **Learn Python from Basics to Production** (Udemy & #BeAble – 5.5 Hours)
+5. **Data Structure Using C Programming With Hands-On Project** (Udemy & #BeAble – 7 Hours)
+6. **Summer Training 2022 – 36 Credit Hours** (Posla, PharmaOverseas, Melano Pharma, Sigma)

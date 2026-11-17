@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iman Mohamed Al-Hussini - Resume</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0.45in 0.55in;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      color: #000;
+      background: #fff;
+      font-size: 10pt;
+      line-height: 1.32;
+      padding: 0.45in 0.55in;
+      max-width: 8.5in;
+      margin: 0 auto;
+    }
+    @media print {
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+    a {
+      color: #000;
+      text-decoration: underline;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .name {
+      font-size: 18pt;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
+    .role-sub {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #222;
+      margin-bottom: 4px;
+    }
+    .contact-info {
+      font-size: 9.5pt;
+      line-height: 1.4;
+    }
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 1px solid #000;
+      padding-bottom: 2px;
+      margin-top: 9px;
+      margin-bottom: 5px;
+      letter-spacing: 0.3px;
+    }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 10pt;
+    }
+    .entry-title {
+      font-weight: bold;
+    }
+    .entry-subtitle {
+      font-style: italic;
+    }
+    .entry-date, .entry-location {
+      font-size: 9.5pt;
+    }
+    .entry-date {
+      font-weight: bold;
+    }
+    ul {
+      margin-left: 18px;
+      margin-top: 2px;
+      margin-bottom: 5px;
+    }
+    li {
+      margin-bottom: 2px;
+      text-align: justify;
+    }
+    p {
+      text-align: justify;
+      margin-bottom: 4px;
+    }
+    .skills-list p {
+      margin-bottom: 2.5px;
+      text-align: left;
+    }
+    /* Toolbar for instant print */
+    .toolbar {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: #111827;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-family: sans-serif;
+      font-size: 13px;
+      z-index: 1000;
+    }
+    .toolbar button {
+      background: #10b981;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .toolbar button:hover {
+      background: #059669;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Printable Toolbar Button -->
+  <div class="toolbar no-print">
+    <span>Ready to save as PDF:</span>
+    <button onclick="window.print()">🖨️ Print / Save as PDF</button>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <h1 class="name">IMAN MOHAMED AL-HUSSINI</h1>
+    <div class="role-sub">React.js Developer &bull; Teaching Assistant &bull; Web Development Instructor</div>
+    <div class="contact-info">
+      Cairo / Zagazig, Egypt &bull; +20 109 139 2429 &bull; <a href="mailto:eman01232002@gmail.com">eman01232002@gmail.com</a><br>
+      <a href="http://www.linkedin.com/in/iman-mohamed-7536a4251" target="_blank">linkedin.com/in/iman-mohamed-7536a4251</a> &bull; 
+      <a href="https://github.com/ImanMohamed20" target="_blank">github.com/ImanMohamed20</a> &bull; 
+      <a href="https://imanmohamed20.github.io/portfolio/" target="_blank">imanmohamed20.github.io/portfolio</a>
+    </div>
+  </header>
+
+  <!-- Professional Summary -->
+  <section>
+    <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+    <p>
+      Computer Science graduate, Teaching Assistant, and Web Development Instructor with hands-on experience in front-end development, technical training, and academic support. Proficient in HTML5, CSS3, JavaScript (ES6+), React.js, Next.js, Python, RESTful APIs, Git/GitHub, SQL, and Power BI. Experienced in building responsive full-stack web applications and mentoring students across university laboratories and national digital initiatives (DECI by EYouth), with administrative proficiency in the Ibn Al-Haytham Student Information System.
+    </p>
+  </section>
+
+  <!-- Education -->
+  <section>
+    <h2 class="section-title">EDUCATION</h2>
+    <div>
+      <div class="entry-header">
+        <span class="entry-title">Zagazig University &ndash; Faculty of Computers and Information</span>
+        <span class="entry-date">2019 &ndash; 2023</span>
+      </div>
+      <div class="entry-header">
+        <span class="entry-subtitle">Bachelor of Computer Science and Information</span>
+        <span class="entry-location"><strong>GPA: 3.08</strong></span>
+      </div>
+      <ul>
+        <li><strong>Graduation Project (Grade A+):</strong> <em>Mobile Application with Chatbot Integration for Pharmacy Students' Training Support</em> &mdash; Collaborated with the College of Pharmacy, led project requirements analysis, improved AI chatbot accuracy by 90%, and authored comprehensive documentation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Work & Teaching Experience -->
+  <section>
+    <h2 class="section-title">EXPERIENCE</h2>
+
+    <div>
+      <div class="entry-header">
+        <span class="entry-title">Digital Egypt Cubs Initiative (DECI) by EYouth</span>
+        <span class="entry-date">2026 &ndash; Present</span>
+      </div>
+      <div class="entry-header">
+        <span class="entry-subtitle">Web Development Instructor</span>
+        <span class="entry-location">Egypt</span>
+      </div>
+      <ul>
+        <li>Deliver structured technical training in programming fundamentals and web development to young learners through practical, project-based activities.</li>
+        <li>Guide students in developing technical applications, strengthening problem-solving capabilities, and providing continuous code reviews and feedback.</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="entry-header">
+        <span class="entry-title">Obour Institutes</span>
+        <span class="entry-date">2025 &ndash; Present</span>
+      </div>
+      <div class="entry-header">
+        <span class="entry-subtitle">Teaching Assistant</span>
+        <span class="entry-location">Cairo, Egypt</span>
+      </div>
+      <ul>
+        <li>Deliver computer science laboratory sessions, tutorials, and practical programming exercises while guiding students in problem-solving concepts.</li>
+        <li>Conduct specialized summer training sessions covering Artificial Intelligence (AI), Python programming, and Microsoft Power BI.</li>
+        <li>Participate in exam supervision, assessment updates, and student registration workflows using the Ibn Al-Haytham Student Information System.</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="entry-header">
+        <span class="entry-title">Skills Area (Online Team)</span>
+        <span class="entry-date">2024 &ndash; 2026</span>
+      </div>
+      <div class="entry-header">
+        <span class="entry-subtitle">Web Development Instructor</span>
+        <span class="entry-location">Remote</span>
+      </div>
+      <ul>
+        <li>Delivered interactive online front-end development training sessions for learners aged 18&ndash;25, mentoring them through real-world web projects.</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="entry-header">
+        <span class="entry-title">IT-MARTIAN</span>
+        <span class="entry-date">2022 &ndash; 2023</span>
+      </div>
+      <div class="entry-header">
+        <span class="entry-subtitle">Front-End Web Developer</span>
+        <span class="entry-location">Cairo, Egypt</span>
+      </div>
+      <ul>
+        <li>Collaborated with a front-end team to build blood and medicine donation web platforms using HTML5, CSS3, and JavaScript.</li>
+        <li>Developed the HDL Drugs Donation module, user authentication features, and responsive cross-browser layouts.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Traineeships & Featured Projects -->
+  <section>
+    <h2 class="section-title">TRAINEESHIPS &amp; KEY PROJECTS</h2>
+
+    <div>
+      <div class="entry-header">
+        <span class="entry-title">Digital Egypt Pioneers Initiative (DEPI) &ndash; Web Development Intern</span>
+        <span class="entry-date">Apr 2024 &ndash; Dec 2024</span>
+      </div>
+      <div class="entry-header">
+        <span class="entry-subtitle">Graduation Project: E-Commerce Web Application (React.js &amp; REST API)</span>
+        <span class="entry-location"><a href="https://client-esw.vercel.app/" target="_blank">client-esw.vercel.app</a></span>
+      </div>
+      <ul>
+        <li>Developed a responsive full-featured e-commerce web application with Product Management/Update admin dashboards, Product Details, Image Slider, Cart, and Checkout using React.js, RESTful APIs, and Local Storage.</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="entry-header">
+        <span class="entry-title">CognoRise InfoTech &ndash; Web Development Intern</span>
+        <span class="entry-date">Sep 2024 &ndash; Oct 2024</span>
+      </div>
+      <div class="entry-header">
+        <span class="entry-subtitle">React.js &amp; Next.js Interactive Web Applications Suite</span>
+        <span class="entry-location"><a href="https://github.com/ImanMohamed20/CognoRise_Infotech" target="_blank">View on GitHub</a></span>
+      </div>
+      <ul>
+        <li>Built 5 responsive applications: Currency Converter (live REST API), To-Do List, Countdown Timer, BMI Calculator, and Calculator using React.js, Next.js, HTML5, CSS3, and Git/GitHub.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Verified Certifications -->
+  <section>
+    <h2 class="section-title">CERTIFICATIONS &amp; TRAINING</h2>
+    <ul>
+      <li><strong>Digital Egypt Pioneers Program (DEPI) &ndash; React Web Developer Job Profile</strong>, Ministry of Communications and Information Technology (MCIT) &amp; EYouth (Apr &ndash; Oct 2024).</li>
+      <li><strong>DEPI Business English Track (Round 1)</strong>, MCIT Egypt &amp; OTO Courses (Apr &ndash; Oct 2024).</li>
+      <li><strong>30-Day Technical Internship in Web Development</strong>, CognoRise InfoTech &bull; ID: CRIT11CTF540 (Sep &ndash; Oct 2024).</li>
+      <li><strong>Summer Training 2022 (36 Credit Hours)</strong>, Posla &amp; PharmaOverseas (2022).</li>
+      <li><strong>Learn Python from Basics to Production</strong> (5.5 Hours) &amp; <strong>Data Structure Using C Programming With Hands-On Project</strong> (7 Hours), Udemy &amp; #BeAble (Jan 2021).</li>
+    </ul>
+  </section>
+
+  <!-- Student Activities & Skills -->
+  <section>
+    <h2 class="section-title">LEADERSHIP, SKILLS &amp; LANGUAGES</h2>
+    <div class="skills-list">
+      <p>&bull; <strong>Student Activities:</strong> HR Team Member at <strong>GDSC Zagazig</strong> (2022&ndash;2023; organized <em>Flutter Forward Zagazig</em>) &amp; HR Team Member at <strong>BioCode Team</strong> (2021&ndash;2023).</p>
+      <p>&bull; <strong>Technical Skills:</strong> React.js, Next.js, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, RESTful APIs, Python, C Programming, Data Structures, SQL Database, Power BI, Data Analytics, NLP, Statistical Modeling, Git/GitHub.</p>
+      <p>&bull; <strong>Soft Skills &amp; Languages:</strong> Problem-Solving, Technical Mentorship, Time Management, Project Management, Team Collaboration &bull; <strong>Arabic</strong> (Native), <strong>English</strong> (B1 Intermediate).</p>
+    </div>
+  </section>
+
+</body>
+</html>
